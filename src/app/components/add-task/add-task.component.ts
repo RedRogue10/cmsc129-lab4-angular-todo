@@ -10,16 +10,13 @@ import { Task } from '../../Task';
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 })
-export class AddTaskComponent implements OnInit {
+export class AddTaskComponent {
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
   title!: string;
   date!: string;
   time!: string;
   prio!: string;
   done: boolean = false;
-
-  ngOnInit(): void {}
-
   onSubmit() {
     if (!this.title) {
       alert('Add a task!');

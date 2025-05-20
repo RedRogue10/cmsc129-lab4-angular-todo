@@ -6,16 +6,24 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 import { UiService } from '../../services/ui.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { EditPopupComponent } from '../edit-popup/edit-popup.component';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [AddTaskComponent, TaskItemComponent, CommonModule],
+  imports: [
+    AddTaskComponent,
+    TaskItemComponent,
+    CommonModule,
+    EditPopupComponent,
+  ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   showAddTask: boolean = false;
+  showEditTask: boolean = false;
+  taskToEdit!: Task;
   subscription!: Subscription;
 
   constructor(private taskService: TaskService, private uiService: UiService) {
@@ -44,9 +52,19 @@ export class TaskListComponent implements OnInit {
       );
   }
   editTask(task: Task) {
-    // popup modal for editing the task or use the add but replace the data
+    this.taskToEdit = task;
+    this.showEditTask = true;
   }
-  updateTask(task: Task) {
-    this.taskService.updateTask(task).subscribe();
+
+  closeEditPopup() {
+    this.showEditTask = false;
+    this.getTasks();
+  }
+  closeAddTask() {
+    this.showAddTask = false;
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 }

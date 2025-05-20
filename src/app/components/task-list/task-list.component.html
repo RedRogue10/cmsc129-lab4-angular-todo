@@ -1,9 +1,16 @@
-<app-add-task *ngIf="showAddTask" (onAddTask)="addTask($event)" />
-
-@for (taskItem of tasks; track $index){
+<app-add-task
+  *ngIf="showAddTask"
+  (onAddTask)="addTask($event)"
+  (onClose)="closeAddTask()"
+></app-add-task>
 <app-task-item
-  [task]="taskItem"
-  (onDeleteTask)="deleteTask(taskItem)"
+  *ngFor="let task of tasks"
+  [task]="task"
+  (onDeleteTask)="deleteTask(task)"
+  (onEditTask)="editTask(task)"
 ></app-task-item>
-
-}
+<app-edit-popup
+  *ngIf="showEditTask"
+  [task]="taskToEdit"
+  (onClose)="closeEditPopup()"
+></app-edit-popup>
