@@ -1,0 +1,21 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <input
+      type="text"
+      placeholder="add a task..."
+      [(ngModel)]="title"
+      name="title"
+      class="title-input"
+    />
+    <div class="task-properties">
+      <input type="date" [(ngModel)]="date" name="date" />
+      <input type="time" [(ngModel)]="time" name="time" class="picker" />
+      <select name="priority" [(ngModel)]="prio" name="priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+    </div>
+    <button type="submit" class="btn">Save and Update Tasks</button>
+  </div>
+</form>

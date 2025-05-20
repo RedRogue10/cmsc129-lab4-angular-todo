@@ -1,0 +1,12 @@
+<header>
+  <h1>Task Tracker</h1>
+  <div class="action-buttons">
+    <app-filter-button></app-filter-button>
+
+    <app-toggle-button
+      color="{{ showAddTask ? 'red' : 'green' }}"
+      text="{{ showAddTask ? 'Close' : 'Add' }}"
+      (btnClick)="toggleAddTask()"
+    ></app-toggle-button>
+  </div>
+</header>

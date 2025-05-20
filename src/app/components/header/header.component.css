@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    align-items: CENTER;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.action-buttons{
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,9 @@
+.task-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    margin: 20px 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+}

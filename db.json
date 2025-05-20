@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "id": "aa0f",
+      "title": "Sample Task",
+      "date": "May 23 2025",
+      "time": "05:40",
+      "priority": "medium",
+      "done": false
+    },
+    {
+      "id": "5d0d",
+      "title": "Yey",
+      "date": "May 30 2025",
+      "time": "07:50",
+      "priority": "low",
+      "done": false
+    }
+  ]
+}

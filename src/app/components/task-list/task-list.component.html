@@ -1,0 +1,9 @@
+<app-add-task *ngIf="showAddTask" (onAddTask)="addTask($event)" />
+
+@for (taskItem of tasks; track $index){
+<app-task-item
+  [task]="taskItem"
+  (onDeleteTask)="deleteTask(taskItem)"
+></app-task-item>
+
+}

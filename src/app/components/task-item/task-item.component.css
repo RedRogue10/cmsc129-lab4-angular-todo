@@ -1,0 +1,16 @@
+.task-item{
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    justify-content: space-around;
+}
+.high{
+    background-color: rgb(255, 116, 116);
+}
+
+.medium{
+    background-color: rgb(255, 255, 137);
+}
+.low{
+    background-color: rgb(147, 255, 147);
+}
