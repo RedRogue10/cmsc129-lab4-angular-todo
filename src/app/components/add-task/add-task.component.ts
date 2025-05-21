@@ -29,6 +29,7 @@ export class AddTaskComponent {
       time: this.time,
       priority: this.prio,
       done: false,
+      dateAdded: new Date().toISOString(),
     };
     this.onAddTask.emit(newTask);
     this.title = '';

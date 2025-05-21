@@ -1,13 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToggleButtonComponent } from '../toggle-button/toggle-button.component';
-import { FilterButtonComponent } from '../filter-button/filter-button.component';
 import { UiService } from '../../services/ui.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ToggleButtonComponent, FilterButtonComponent],
+  imports: [ToggleButtonComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

@@ -1,12 +1,3 @@
 {
-  "tasks": [
-    {
-      "id": "e814",
-      "title": "My Task",
-      "date": "May 24 2025",
-      "time": "06:50",
-      "priority": "medium",
-      "done": false
-    }
-  ]
+  "tasks": []
 }

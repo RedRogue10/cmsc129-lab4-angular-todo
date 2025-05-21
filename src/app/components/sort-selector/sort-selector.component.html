@@ -1,0 +1,17 @@
+<div class="sort-selector">
+  <label>
+    Sort by:
+    <select [(ngModel)]="sortBy" (change)="onSortChange()">
+      <option value="duedate">Due Date</option>
+      <option value="dateadded">Date Added</option>
+      <option value="priority">Priority</option>
+    </select>
+  </label>
+  <label>
+    Order:
+    <select [(ngModel)]="order" (change)="onSortChange()">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </label>
+</div>

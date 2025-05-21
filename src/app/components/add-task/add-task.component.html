@@ -6,10 +6,17 @@
       [(ngModel)]="title"
       name="title"
       class="title-input"
+      required
     />
     <div class="task-properties">
-      <input type="date" [(ngModel)]="date" name="date" />
-      <input type="time" [(ngModel)]="time" name="time" class="picker" />
+      <input type="date" [(ngModel)]="date" name="date" required />
+      <input
+        type="time"
+        [(ngModel)]="time"
+        name="time"
+        class="picker"
+        required
+      />
       <select name="priority" [(ngModel)]="prio" name="priority">
         <option value="high">High</option>
         <option value="medium">Medium</option>

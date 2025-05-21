@@ -1,8 +1,14 @@
 <div class="task-item" [ngClass]="priority">
-  <input type="checkbox" [value]="completed" />
+  <input type="checkbox" [checked]="completed" />
   <div>
-    <p>{{ title }}</p>
-    <p>Due on {{ date }}</p>
+    <p class="task-title">{{ title }}</p>
+    <p class="task-description">
+      Due on
+      <span *ngIf="date">
+        {{ date | date : "MMM d, y" }}
+      </span>
+      <span *ngIf="time"> at {{ time }} </span>
+    </p>
   </div>
   <fa-icon (click)="onEdit(task)" [icon]="faEdit"></fa-icon>
   <fa-icon (click)="onDelete(task)" [icon]="faMult"></fa-icon>

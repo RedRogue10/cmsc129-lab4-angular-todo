@@ -3,6 +3,7 @@
   (onAddTask)="addTask($event)"
   (onClose)="closeAddTask()"
 ></app-add-task>
+<app-sort-selector (sortChange)="onSortChange($event)"></app-sort-selector>
 <app-task-item
   *ngFor="let task of tasks"
   [task]="task"

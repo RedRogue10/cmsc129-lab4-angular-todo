@@ -1,0 +1,31 @@
+.sort-selector {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: #f8f9fa;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+label {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+select {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  background: #fff;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+select:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
+}
