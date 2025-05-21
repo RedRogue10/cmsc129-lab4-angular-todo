@@ -8,6 +8,8 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { EditPopupComponent } from '../edit-popup/edit-popup.component';
 import { SortSelectorComponent } from '../sort-selector/sort-selector.component';
+import { ToastComponent } from '../toast/toast.component';
+
 @Component({
   selector: 'app-task-list',
   standalone: true,
@@ -17,6 +19,7 @@ import { SortSelectorComponent } from '../sort-selector/sort-selector.component'
     CommonModule,
     EditPopupComponent,
     SortSelectorComponent,
+    ToastComponent, // <-- Add here
   ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
@@ -31,6 +34,11 @@ export class TaskListComponent implements OnInit {
   // Add these properties to track sort state
   sortBy: string = 'duedate';
   order: string = 'asc';
+
+  showToast: boolean = false;
+  toastMessage: string = '';
+  private deletedTask: Task | null = null;
+  private toastTimeout: any;
 
   constructor(private taskService: TaskService, private uiService: UiService) {
     this.subscription = this.uiService
@@ -51,11 +59,11 @@ export class TaskListComponent implements OnInit {
     this.taskService.addTask(task).subscribe((task) => this.tasks.push(task));
   }
   deleteTask(task: Task) {
-    this.taskService
-      .deleteTask(task)
-      .subscribe(
-        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
-      );
+    this.deletedTask = task;
+    this.taskService.deleteTask(task).subscribe(() => {
+      this.tasks = this.tasks.filter((t) => t.id !== task.id);
+      this.showUndoToast('Task deleted.'); // Show toast
+    });
   }
   editTask(task: Task) {
     this.taskToEdit = task;
@@ -110,5 +118,31 @@ export class TaskListComponent implements OnInit {
       this.tasks = tasks;
       this.sortTasks();
     });
+  }
+
+  showUndoToast(message: string) {
+    this.toastMessage = message;
+    this.showToast = true;
+    if (this.toastTimeout) {
+      clearTimeout(this.toastTimeout);
+    }
+    this.toastTimeout = setTimeout(() => {
+      this.showToast = false;
+      this.deletedTask = null; // Clear after toast disappears
+    }, 3000); // 3 seconds
+  }
+
+  undoDelete() {
+    if (this.deletedTask) {
+      this.taskService.addTask(this.deletedTask).subscribe((task) => {
+        this.tasks.push(task);
+        this.sortTasks();
+        this.showToast = false;
+        this.deletedTask = null;
+        if (this.toastTimeout) {
+          clearTimeout(this.toastTimeout);
+        }
+      });
+    }
   }
 }

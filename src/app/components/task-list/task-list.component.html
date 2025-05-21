@@ -15,3 +15,8 @@
   [task]="taskToEdit"
   (onClose)="closeEditPopup()"
 ></app-edit-popup>
+<app-toast
+  [message]="toastMessage"
+  [visible]="showToast"
+  (undo)="undoDelete()"
+></app-toast>

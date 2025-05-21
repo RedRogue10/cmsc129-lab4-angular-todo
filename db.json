@@ -1,3 +1,13 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "c404",
+      "title": "My Task",
+      "date": "May 09 2025",
+      "time": "09:34",
+      "priority": "medium",
+      "done": false,
+      "dateAdded": "2025-05-21T01:31:15.409Z"
+    }
+  ]
 }
